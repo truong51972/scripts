@@ -12,7 +12,7 @@ fi
 sudo apt-get install keychain -y
 SCRIPT='
 # Keychain setup
-eval $(keychain --eval --agents ssh git)
+eval $(keychain --quiet --eval --agents ssh git)
 '
 
 if ! grep -Fq "# Keychain setup" "$SHELL_CONFIG"; then
