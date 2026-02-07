@@ -20,3 +20,5 @@ if [ "$create_key" = "y" ] || [ "$create_key" = "Y" ]; then
         bash installers/nvidia-container-toolkit.sh
     fi
 fi
+
+bash installers/clean.sh
