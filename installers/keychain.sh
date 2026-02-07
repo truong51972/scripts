@@ -15,6 +15,4 @@ SCRIPT='
 eval $(keychain --quiet --eval --agents ssh git)
 '
 
-if ! grep -Fq "# Keychain setup" "$SHELL_CONFIG"; then
-    echo -e "$SCRIPT" >> "$SHELL_CONFIG"
-fi
+append_if_not_exists "$SCRIPT" "$SHELL_CONFIG"
