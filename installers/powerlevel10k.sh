@@ -1,5 +1,7 @@
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+SCRIPT='source ~/powerlevel10k/powerlevel10k.zsh-theme'
+append_if_not_exists "$SCRIPT" "~/.zshrc"
 
 cp ./config/.p10k.zsh ~/.p10k.zsh
-echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+SCRIPT='[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh'
+append_if_not_exists "$SCRIPT" "~/.zshrc"

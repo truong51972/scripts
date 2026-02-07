@@ -1,24 +1,26 @@
 #!/bin/bash
 
-bash installers/basic.sh
-read -p "$(echo -e '\033[32mInstall zsh and oh-my-zsh? (y/n): \033[0m')" install_zsh
+source utils/utils.sh
+
+source installers/basic.sh
+read -p "$(color_text "Install zsh and oh-my-zsh? (y/n): " "green")" install_zsh
 if [ "$install_zsh" = "y" ] || [ "$install_zsh" = "Y" ]; then
-    bash installers/zsh.sh
-    bash installers/powerlevel10k.sh
+    source installers/zsh.sh
+    source installers/powerlevel10k.sh
 fi
 
-bash installers/auto_direct_dir.sh
-bash installers/keychain.sh
-bash installers/python.sh
+source installers/auto_direct_dir.sh
+source installers/keychain.sh
+source installers/python.sh
 
-read -p "$(echo -e '\033[32mInstall docker? (y/n): \033[0m')" create_key
+read -p "$(color_text "Install docker? (y/n): " "green")" create_key
 if [ "$create_key" = "y" ] || [ "$create_key" = "Y" ]; then
-    bash installers/docker.sh
+    source installers/docker.sh
 
-    read -p "$(echo -e '\033[32mInstall nvidia container toolkit? (y/n): \033[0m')" nvtoolkit
+    read -p "$(color_text "Install nvidia container toolkit? (y/n): " "green")" nvtoolkit
     if [ "$nvtoolkit" = "y" ] || [ "$nvtoolkit" = "Y" ]; then
-        bash installers/nvidia-container-toolkit.sh
+        source installers/nvidia-container-toolkit.sh
     fi
 fi
 
-bash installers/clean.sh
+source installers/clean.sh
