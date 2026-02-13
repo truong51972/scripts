@@ -10,9 +10,6 @@ if [ "$create_key" = "y" ] || [ "$create_key" = "Y" ]; then
 fi
 
 sudo apt-get install keychain -y
-SCRIPT='
-# Keychain setup
-eval $(keychain --quiet --eval --agents ssh git)
-'
-
-append_if_not_exists "$SCRIPT" "$SHELL_CONFIG"
+TITLE="# Keychain setup"
+CONTENT='eval $(keychain --quiet --eval --agents ssh git)'
+append_if_not_exists "$TITLE" "$CONTENT" "$SHELL_CONFIG"

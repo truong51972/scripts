@@ -10,6 +10,6 @@ sed -i '/^plugins=(git)$/c\plugins=(\n\tgit\n\tzsh-autosuggestions\n)' ~/.zshrc
 
 # setup syntax highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-SCRIPT='source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-
-append_if_not_exists "$SCRIPT" "${ZDOTDIR:-$HOME}/.zshrc"
+TITLE="# setup syntax highlighting"
+CONTENT='source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+append_if_not_exists "$TITLE" "$CONTENT" "${ZDOTDIR:-$HOME}/.zshrc"
