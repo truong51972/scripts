@@ -23,4 +23,7 @@ if [ "$create_key" = "y" ] || [ "$create_key" = "Y" ]; then
     fi
 fi
 
+source installers/zoxide.sh
+source installers/k8s.sh
+
 source installers/clean.sh

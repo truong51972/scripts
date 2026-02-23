@@ -1,9 +1,14 @@
 # Append content to file if not already present, including a comment
-# Usage: append_if_not_exists "comment" "content" "file"
-append_if_not_exists() {
+# Usage: append_if_not_exists_in_script "comment" "content"
+append_if_not_exists_in_script() {
+	if [ -f "$HOME/.zshrc" ]; then
+    	local file="$HOME/.zshrc"
+	else
+		local file="$HOME/.bashrc"
+	fi
+
 	local comment="$1"
 	local content="$2"
-	local file="$3"
 
 	# Check if the comment exists in the file
 	if ! grep -Fq "$comment" "$file" 2>/dev/null; then
@@ -31,4 +36,14 @@ color_text() {
 			color_code="" ;;
 	esac
 	echo -e "${color_code}${text}\033[0m"
+}
+
+
+add_plugin_if_not_exists() {
+	local plugin="$1"
+	local file="$HOME/.zshrc"
+
+	if ! grep -Fq "plugins=(.*$plugin.*)" "$file" 2>/dev/null; then
+		sed -i "/^plugins=(/ s/)/ $plugin)/" "$file"
+	fi
 }
