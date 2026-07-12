@@ -1,4 +1,6 @@
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+if [ ! -d "$HOME/powerlevel10k" ]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+fi
 TITLE="# Powerlevel10k theme setup"
 CONTENT='source ~/powerlevel10k/powerlevel10k.zsh-theme'
 

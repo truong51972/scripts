@@ -43,7 +43,12 @@ add_plugin_if_not_exists() {
 	local plugin="$1"
 	local file="$HOME/.zshrc"
 
-	if ! grep -Fq "plugins=(.*$plugin.*)" "$file" 2>/dev/null; then
-		sed -i "/^plugins=(/ s/)/ $plugin)/" "$file"
+	[ -f "$file" ] || return
+
+	# Check if the plugin name is a separate word inside the plugins=(...) line
+	if grep -E -q "^plugins=\(.*[[:space:]\(]${plugin}[[:space:]\)]" "$file" 2>/dev/null; then
+		return
 	fi
+
+	sed -i "/^plugins=(/ s/)/ $plugin)/" "$file"
 }
